@@ -27,9 +27,10 @@ async function bootstrap() {
     client.release();
 
     app.listen(PORT, () => {
+      const baseUrl = process.env.BASE_URL || `http://localhost:${PORT}`;
       console.log(`------Server running on port ${PORT}------`);
-      console.log(`POST http://localhost:${PORT}/identify`);
-      console.log(`GET http://localhost:${PORT}/health`);
+      console.log(`POST ${baseUrl}/identify`);
+      console.log(`GET ${baseUrl}/health`);
     });
   } catch (err) {
     console.error("------Failed to connect to database------", err);
